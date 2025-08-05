@@ -133,6 +133,7 @@ jobs:
         curl -L https://github.com/bytecodealliance/wasip3-prototyping/releases/download/dev/wasmtime-dev-x86_64-macos.tar.xz | tar xJvf -
         echo "WASMTIME=`pwd`/wasmtime-dev-x86_64-macos/wasmtime" >> $GITHUB_ENV
     - run: |
+        wasmtime --version
         cargo run test --languages rust,c tests/runtime-async \
           --artifacts target/artifacts \
           --rust-wit-bindgen-path ./crates/guest-rust \
