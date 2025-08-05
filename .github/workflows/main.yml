@@ -120,7 +120,7 @@ jobs:
   # least enables testing async things in this repository more easily.
   async:
     name: Test Async (allowed to fail)
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v4
       with:
@@ -130,7 +130,7 @@ jobs:
     - run: rustup target add wasm32-wasip1
     - uses: ./.github/actions/install-wasi-sdk
     - run: |
-        curl -L https://github.com/bytecodealliance/wasip3-prototyping/releases/download/dev/wasmtime-dev-x86_64-linux.tar.xz | tar xJvf -
+        curl -L https://github.com/bytecodealliance/wasip3-prototyping/releases/download/dev/wasmtime-dev-x86_64-macos.tar.xz | tar xJvf -
         echo "WASMTIME=`pwd`/wasmtime-dev-x86_64-linux/wasmtime" >> $GITHUB_ENV
     - run: |
         cargo run test --languages rust,c tests/runtime-async \
